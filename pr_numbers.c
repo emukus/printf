@@ -1,6 +1,17 @@
 #include "main.h"
 
 /**
+ * _isdigit - function that checks if character is digit
+ * @c: the character to check
+ *
+ * Return: 1 if digit, 0 otherwise
+ */
+int _isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+/**
  * print_int - function that prints an integer
  * @l: va_list of arguments to pass from _printf()
  * @f: pointer to the struct flags determining
@@ -86,3 +97,5 @@ int count_digit(int i)
 	}
 	return (d);
 }
+
+

@@ -10,6 +10,14 @@
  * @plus: flag for the '+' character
  * @space: flag for the ' ' char
  * @hash: flag for the '#' char
+ * @zero: flag for the '0' char
+ * @minus: flag for the '-' char
+ *
+ * @width: specified fied width
+ * @precision: specified field precision
+ *
+ * @h_mod: turns on if h_mod is specified
+ * @l_mod: turns of if l_mod is specified
  */
 
 typedef struct flags
@@ -17,6 +25,14 @@ typedef struct flags
 	int plus;
 	int space;
 	int hash;
+	int zero;
+	int minus;
+
+	int width;
+	int precision;
+
+	int h_mod;
+	int l_mod;
 } flags_t;
 
 /**
@@ -45,7 +61,12 @@ int get_flag(char s, flags_t *f);
 /* get_print */
 int (*get_print(char s))(va_list, flags_t *);
 
+/* get_modifier */
+int get_modifier(char s, flags_t *f);
+char *get_width(char *s, flags_t *f, va_list l);
+
 /* prints_nums */
+int _isdigit(int c);
 int print_int(va_list l, flags_t *f);
 void print_number(int n);
 int print_unsigned(va_list l, flags_t *f);
@@ -68,6 +89,9 @@ int print_char(va_list l, flags_t *f);
 int print_rot13(va_list l, flags_t *f);
 int print_rev(va_list l, flags_t *f);
 int print_bigS(va_list l, flags_t *f);
+
+/* get_precision */
+char *get_precision(char *p, flags_t *f, va_list l);
 
 /* print_address */
 int print_address(va_list l, flags_t *f);
